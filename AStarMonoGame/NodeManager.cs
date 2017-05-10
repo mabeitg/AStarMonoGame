@@ -36,7 +36,7 @@ namespace AStarMonoGame
             GetPair(position).neighbours= new List<Node>();
         }
 
-        //Fyll lista med noder, alla Unused som standard
+        //Konstruktor. Fyll lista med noder, alla Unused som standard
         public NodeManager(Vector2 maxPosition, bool diagonalAllowed)
         {
             this.diagonalAllowed = diagonalAllowed;
@@ -53,7 +53,7 @@ namespace AStarMonoGame
                 }
             }
         }
-
+        //Konstruktor. Anropar enklare konstruktor.
         public NodeManager(Vector2 maxPosition, Vector2 start, Vector2 goal, bool diagonalAllowed):this(maxPosition,diagonalAllowed)
         {
             ChangeNodeType(start, TypeOfNode.Start);
@@ -62,7 +62,7 @@ namespace AStarMonoGame
             this.goal= GetPair(goal).node;
         }
 
-
+        //Startvärden på allt! Eller nästan allt.
         public void Initialize(Vector2 startPosition, Vector2 goalPosition, List<Vector2> walls)
         {
             openSet = new List<Node>();
@@ -101,7 +101,7 @@ namespace AStarMonoGame
             this.font = font;
         }
 
-        //
+        //CENTRAL METOD! Beräkna neighbours och kolla vart vi ska härnäst. 
         public void Step()
         {
             closedSet.Add(currentPair.node); //Noden vi är i behöver inte undersökas mer

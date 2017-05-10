@@ -19,8 +19,19 @@ namespace AStarMonoGame
         public Vector2 position;
         int size = 15;
 
+        public Node parent; //Från vilken nod bör man komma när man ska hit? VIKTIG!
 
-        public Node parent;
+        //Nodens totala "värde"
+        public float f { get { return g + h; } }
+
+        //string med värdena
+        public string Info
+        {
+            get
+            {
+                return "g: " + g + "\r\n" + "h: " + h + "\r\n" + "f: " + f;
+            }
+        }
 
         //Varje typ har sin färg!
         Color color
@@ -52,26 +63,15 @@ namespace AStarMonoGame
                         color = Color.DarkGoldenrod;
                         break;
 
-                    default: color = Color.White; //Ingenting
+                    default:
+                        color = Color.White; //Ingenting
                         break;
                 }
                 return color;
             }
         }
-        
 
-        //Nodens totala "värde"
-        public float f { get { return g + h; } }
-
-        //string med värdena
-        public string Info
-        {
-            get
-            {
-                return "g: " + g + "\r\n" + "h: " + h + "\r\n" + "f: " + f;
-            }
-        }
-
+        //Konstruktor
         public Node(Vector2 position, TypeOfNode type)
         {
             this.position = position;
